@@ -101,7 +101,12 @@ showRandomQuote();// Initial quotes arrayfunction createAddQuoteForm() {
   const savedQuotes = localStorage.getItem('quotes');
   if (savedQuotes) {
     quotes = JSON.parse(savedQuotes);
-  }
+  }  document.getElementById('exportQuotes').addEventListener('click', function() {
+    const dataStr = JSON.stringify(quotes, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+  
+    const a =
 
 // Display a random quote
 function displayRandomQuote() {

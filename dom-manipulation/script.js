@@ -200,4 +200,19 @@ function filterQuotes() {
 }
 
 // Call populateCategories after any change to quotes
-populateCategories();
+populateCategories();function filterQuotes() {
+  const categoryFilter = document.getElementById('categoryFilter');
+  const selectedCategory = categoryFilter.value; // <-- Use selectedCategory
+  let filteredQuotes = quotes;
+  if (selectedCategory !== 'all') {
+    filteredQuotes = quotes.filter(q => q.category === selectedCategory);
+  }
+  const quoteDisplay = document.getElementById('quoteDisplay');
+  if (filteredQuotes.length === 0) {
+    quoteDisplay.innerHTML = "No quotes available.";
+    return;
+  }
+  const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
+  const quote = filteredQuotes[randomIndex];
+  quoteDisplay.innerHTML = `"${quote.text}" <br><em>[${quote.category}]</em>`;
+}

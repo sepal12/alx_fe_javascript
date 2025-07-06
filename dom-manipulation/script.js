@@ -246,4 +246,18 @@ populateCategories();function filterQuotes() {
   } catch (error) {
     console.error('Error fetching quotes from server:', error);
   }
+}async function postQuoteToServer(quote) {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(quote)
+    });
+    const data = await response.json();
+    console.log('Posted quote to server:', data);
+  } catch (error) {
+    console.error('Error posting quote to server:', error);
+  }
 }

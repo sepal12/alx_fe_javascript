@@ -177,7 +177,13 @@ displayRandomQuote();document.getElementById('importFile').addEventListener('cha
     // quotes.forEach(q => postQuoteToServer(q));
     console.log('Quotes synced with server.');
   }  // Periodically sync quotes with the server every 60 seconds
-  setInterval(syncQuotes, 60000);.map(q => q.category))];
+  setInterval(syncQuotes, 60000);  function syncQuotes() {
+    // Example: Simulate syncing quotes with the server
+    fetchQuotesFromServer();
+    // You could also POST local quotes to the server here if needed
+    // quotes.forEach(q => postQuoteToServer(q));
+    console.log("Quotes synced with server!");
+  }.map(q => q.category))];
   // Clear existing options except "All Categories"
   categoryFilter.innerHTML = '<option value="all">All Categories</option>';
   categories.forEach(category => {

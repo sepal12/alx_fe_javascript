@@ -215,4 +215,21 @@ populateCategories();function filterQuotes() {
   const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
   const quote = filteredQuotes[randomIndex];
   quoteDisplay.innerHTML = `"${quote.text}" <br><em>[${quote.category}]</em>`;
+}function fetchQuotesFromServer() {
+  // Example: Simulate fetching quotes from a server (mock)
+  // You can replace the URL with a real API endpoint if needed
+  fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())
+    .then(data => {
+      // This is just a mock; adapt as needed for real quote data
+      console.log('Fetched quotes from server:', data);
+      // Example: If the server returns quotes, you could merge them here
+      // quotes.push(...data);
+      // localStorage.setItem('quotes', JSON.stringify(quotes));
+      // populateCategories();
+      // displayRandomQuote();
+    })
+    .catch(error => {
+      console.error('Error fetching quotes from server:', error);
+    });
 }

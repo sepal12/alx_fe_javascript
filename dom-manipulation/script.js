@@ -232,4 +232,18 @@ populateCategories();function filterQuotes() {
     .catch(error => {
       console.error('Error fetching quotes from server:', error);
     });
+}async function fetchQuotesFromServer() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await response.json();
+    // This is just a mock; adapt as needed for real quote data
+    console.log('Fetched quotes from server:', data);
+    // Example: If the server returns quotes, you could merge them here
+    // quotes.push(...data);
+    // localStorage.setItem('quotes', JSON.stringify(quotes));
+    // populateCategories();
+    // displayRandomQuote();
+  } catch (error) {
+    console.error('Error fetching quotes from server:', error);
+  }
 }

@@ -1,4 +1,4 @@
-// JavaScript for Dynamic Quote Generator// Initial quotes array
+// Initial quotes array
 let quotes = [
   { text: "The best way to get started is to quit talking and begin doing.", category: "Motivation" },
   { text: "Don't let yesterday take up too much of today.", category: "Inspiration" },

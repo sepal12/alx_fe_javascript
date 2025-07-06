@@ -170,7 +170,13 @@ displayRandomQuote();document.getElementById('importFile').addEventListener('cha
 });function populateCategories() {
   const categoryFilter = document.getElementById('categoryFilter');
   // Get unique categories
-  const categories = [...new Set(quotes.map(q => q.category))];
+  const categories = [...new Set(quotes  function syncQuotes() {
+    // Example: Simulate syncing quotes with the server
+    fetchQuotesFromServer();
+    // You could also POST local quotes to the server here if needed
+    // quotes.forEach(q => postQuoteToServer(q));
+    console.log('Quotes synced with server.');
+  }.map(q => q.category))];
   // Clear existing options except "All Categories"
   categoryFilter.innerHTML = '<option value="all">All Categories</option>';
   categories.forEach(category => {

@@ -167,4 +167,37 @@ displayRandomQuote();document.getElementById('importFile').addEventListener('cha
     }
   };
   reader.readAsText(file);
-});
+});function populateCategories() {
+  const categoryFilter = document.getElementById('categoryFilter');
+  // Get unique categories
+  const categories = [...new Set(quotes.map(q => q.category))];
+  // Clear existing options except "All Categories"
+  categoryFilter.innerHTML = '<option value="all">All Categories</option>';
+  categories.forEach(category => {
+    const option = document.createElement('option');
+    option.value = category;
+    option.textContent = category;
+    categoryFilter.appendChild(option);
+  });
+}
+
+// Filter quotes based on selected category
+function filterQuotes() {
+  const categoryFilter = document.getElementById('categoryFilter');
+  const selected = categoryFilter.value;
+  let filteredQuotes = quotes;
+  if (selected !== 'all') {
+    filteredQuotes = quotes.filter(q => q.category === selected);
+  }
+  const quoteDisplay = document.getElementById('quoteDisplay');
+  if (filteredQuotes.length === 0) {
+    quoteDisplay.innerHTML = "No quotes available.";
+    return;
+  }
+  const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
+  const quote = filteredQuotes[randomIndex];
+  quoteDisplay.innerHTML = `"${quote.text}" <br><em>[${quote.category}]</em>`;
+}
+
+// Call populateCategories after any change to quotes
+populateCategories();

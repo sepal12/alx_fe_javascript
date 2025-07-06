@@ -90,6 +90,17 @@ showRandomQuote();// Initial quotes arrayfunction createAddQuoteForm() {
     categoryInput.value = '';
     displayRandomQuote();
     alert('Quote added!');
+  }  // Initial quotes array
+  let quotes = [
+    { text: "The best way to get started is to quit talking and begin doing.", category: "Motivation" },
+    { text: "Don't let yesterday take up too much of today.", category: "Inspiration" },
+    { text: "It's not whether you get knocked down, it's whether you get up.", category: "Perseverance" }
+  ];
+  
+  // Load quotes from localStorage if available
+  const savedQuotes = localStorage.getItem('quotes');
+  if (savedQuotes) {
+    quotes = JSON.parse(savedQuotes);
   }
 
 // Display a random quote

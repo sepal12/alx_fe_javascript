@@ -83,6 +83,13 @@ showRandomQuote();// Initial quotes arrayfunction createAddQuoteForm() {
     const p = document.createElement('p');
     p.textContent = "Add your favorite quotes!";
     document.body.appendChild(p);
+  }  if (text && category) {
+    quotes.push({ text, category });
+    localStorage.setItem('quotes', JSON.stringify(quotes)); // Save to localStorage
+    textInput.value = '';
+    categoryInput.value = '';
+    displayRandomQuote();
+    alert('Quote added!');
   }
 
 // Display a random quote

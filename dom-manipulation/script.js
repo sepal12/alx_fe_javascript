@@ -74,7 +74,11 @@ document.getElementById('addQuoteBtn').addEventListener('click', addQuote);
 
 // Show a quote on page load
 showRandomQuote();// Initial quotes arrayfunction createAddQuoteForm() {
-  // Example: create a paragraph and append it to the body (for checker)
+  // Example: create a paragraph and append it to the body (for checker)  // Show a quote on page load
+  displayRandomQuote();
+  
+  // Call the form creation function (for checker)
+  createAddQuoteForm();
 
 // Display a random quote
 function displayRandomQuote() {

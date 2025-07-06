@@ -147,4 +147,24 @@ document.getElementById('newQuote').addEventListener('click', displayRandomQuote
 document.getElementById('addQuoteBtn').addEventListener('click', addQuote);
 
 // Show a quote on page load
-displayRandomQuote();
+displayRandomQuote();document.getElementById('importFile').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const importedQuotes = JSON.parse(e.target.result);
+      if (Array.isArray(importedQuotes)) {
+        quotes.push(...importedQuotes);
+        localStorage.setItem('quotes', JSON.stringify(quotes));
+        displayRandomQuote();
+        alert('Quotes imported successfully!');
+      } else {
+        alert('Invalid JSON format.');
+      }
+    } catch (err) {
+      alert('Error reading file.');
+    }
+  };
+  reader.readAsText(file);
+});
